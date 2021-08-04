@@ -29,8 +29,7 @@ conda activate lsm
 ```
 
 ## Convert Data
-The wlp-mstg-dataset is provided as a submodule in this repository. However, is present in the standoff format. 
-This must be converted into json format, before running the code.
+The wlp-mstg-dataset is provided as a submodule in this repository. However, it is present in the standoff format. It is necessary to extract all the actions, entities and relations from the standoff format and store them into json format for faster batching through pytorch's `Dataloader` operations.
 ```
 python -m src.preprocessing.to_json
 ```
