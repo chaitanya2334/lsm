@@ -78,12 +78,6 @@ def wlp_csr_dataset():
         kernel_size=5,
         stride=2
     )
-
-    json_dir = os.path.join(ROOT_DIR, f"./data_abb/wlp_csr_k5_s2")
-    # os.makedirs(json_dir, exist_ok=True)
-    # to_json(
-    #     src="wlp-csr-dataset/train", dest=os.path.join(json_dir, "full_train")
-    # )
     to_json(src="wlp-mstg-dataset/dev", dest_dir=json_dir, dest_name="full_dev")
     to_json(
         src="wlp-mstg-dataset/test", dest_dir=json_dir, dest_name="full_test"

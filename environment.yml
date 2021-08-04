@@ -1,4 +1,4 @@
-name: csr
+name: lsm
 channels:
   - pytorch
   - defaults
