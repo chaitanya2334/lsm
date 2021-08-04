@@ -1,0 +1,3 @@
+[submodule "wlp-mstg-dataset"]
+	path = wlp-mstg-dataset
+	url = git@github.com:chaitanya2334/wlp-mstg-dataset.git

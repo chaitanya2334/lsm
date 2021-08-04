@@ -1,0 +1,17 @@
+# @package _global_
+hydra:
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: "[%(asctime)s][%(name)s][%(levelname)s] - %(message)s"
+    handlers:
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.job.name}.log
+    root:
+      level: INFO
+      handlers: [file]
+
+    disable_existing_loggers: false

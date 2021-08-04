@@ -1,0 +1,157 @@
+lr_find: False
+seed: 0
+deterministic: False
+# chk: ./outputs/paper_runs/igcn-8[THE BEST MODEL]/results/models/r-igcn-4[rel:pos-ffn-2d][shared_decoder]_1-v0.ckpt
+chk: False
+vis_protocol: "protocol_0"
+
+data:
+  train: "data/wlp_csr_k5_s2/train.json"
+  dev: "data/wlp_csr_k5_s2/dev.json"
+  test: "data_abb/wlp_csr_k5_s2/test.json"
+  full_test: "data_abb/wlp_csr_k5_s2/full_test.json"
+  full_dev: "data_abb/wlp_csr_k5_s2/full_dev.json"
+
+results:
+  model_save: "results/models/r-igcn-4[rel:pos-ffn-2d][shared_decoder]_{}"
+  exp_name: "r-igcn-4[rel:pos-ffn-2d][shared_decoder]"
+
+on_gpu: True
+cv_split: False # to train using cross validation splits
+num_workers: 8
+eval_wlp: True
+cross_sentence: True
+monitor_val: val_doc_eval_FULL/prf/F1
+
+hparams:
+  n_layers: 8
+  batch_size: 1 # 2 protocol at a time
+  pos_step_embedding: True
+  rel_conv: True
+  multi_head_r_gcn: True
+  transcoder_block: True
+  max_pos: 100
+  max_step: 5
+  max_span_width: 10
+  tkn_emb_dim: 768
+  s2t: True
+  label_smoothing_epsilon: 0.1
+  span_aux_emb_dims: 50
+  span_emb_dims: 340
+  ent_arch: []
+  ent_act: False
+  ent_dropout: 0.1
+  rel_dropout: 0.2
+  span_loss_alpha: 0.125
+  ent_loss_alpha: 0.125
+  rel_loss_alpha: 0.75
+  layernorm: True
+  ent_bias: True
+  max_step_gap: 5
+  per_spans_to_keep: 0.1
+  ent_prune_score_threshold: 0.50
+  lr: 2.13e-05
+  bert_hidden_dim: 768
+  bert_fcn_out: 200
+  head_tail_mlp_out: 100
+  head_tail_mlp_dropout: 0
+  head_tail_mlp_act: "tanh"
+  gcn_act: "relu"
+  gcn_nfeatures: 200
+  gcn_nhidden1: 100
+  gcn_nhidden2: 50
+  gcn_dropout: 0.2
+  rel:
+    input_emb_size: 200
+    pos_emb_size: 50
+    line_emb_size: 50
+
+wlp_props:
+  lowercase: True # whether or not to covert all word tokens to lowercase
+  replace_digits: True # whether or not to replace all digits with 0.
+  special_tokens:
+    pad: "[PAD]"
+    unk: "[UNK]"
+    start: "[CLS]"
+    stop: "[SEP]"
+
+  rels:
+    classes_set:
+      full:
+        [
+          "Acts-on",
+          "Site",
+          "Using",
+          "Count",
+          "Measure-Type-Link",
+          "Coreference-Link",
+          "Mod-Link",
+          "Setting",
+          "Measure",
+          "Meronym",
+          "Or",
+          "Of-Type",
+          "Enables",
+          "Prevents",
+          "Overlaps",
+          "Product",
+        ]
+      captac:
+        [
+          "Acts-on",
+          "Site",
+          "Coreference-Link",
+          "Or",
+          "Enables",
+          "Prevents",
+          "Overlaps",
+          "Product",
+        ]
+      iap:
+        [
+          "Acts-on",
+          "Site",
+          "Product",
+          "Using",
+          "Count",
+          "Measure-Type-Link",
+          "Mod-Link",
+          "Setting",
+          "Measure",
+          "Meronym",
+          "Or",
+          "Of-Type",
+        ]
+      temp: ["Acts-on", "Site", "Product", "Overlaps", "Coreference-Link"]
+    undirected_classes: ["Overlaps", "Or", "Coreference-Link"]
+    neg_class: "O"
+    neg_frac: 1.0
+    pos_frac: 1.0
+
+  ents:
+    req_class: "Action" # must have class
+    classes:
+      [
+        "Action",
+        "Reagent",
+        "Location",
+        "Device",
+        "Mention",
+        "Method",
+        "Amount",
+        "Concentration",
+        "Size",
+        "Time",
+        "Temperature",
+        "pH",
+        "Speed",
+        "Seal",
+        "Modifier",
+        "Generic-Measure",
+        "Numerical",
+        "Measure-Type",
+      ]
+    neg_class: "O"
+
+defaults:
+  - hydra/job_logging: custom
