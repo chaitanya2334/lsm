@@ -1,7 +1,7 @@
 # Latent Structure Model
 Model to construct material state transfer graphs from wet lab protocols by learning intermediate latent structures as described in [Learning Latent Structures for Cross Action Phrase Relations in Wet Lab Protocols](https://aclanthology.org/2021.acl-long.525.pdf). 
 
-![main figure](https://github.com/chaitanya2334/lsm/blob/master/lsm.jpg?raw=true)
+![main figure](https://github.com/chaitanya2334/lsm/blob/main/lsm.jpg?raw=true)
 
 # Setup
 ## Requirements
