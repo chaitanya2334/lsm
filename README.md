@@ -43,11 +43,10 @@ python -m src.trainers.igcn_trainer
 ```
 
 ## Cite
-[**Learning Latent Structures for Cross Action Phrase Relations in Wet Lab Protocols**](https://aclanthology.org/2021.acl-long.525.pdf)
+[**Learning Latent Structures for Cross Action Phrase Relations in Wet Lab Protocols**](https://aclanthology.org/2021.acl-long.525.pdf)  
+Chaitanya Kulkarni, Jany Chan, Eric Fosler-Lussier, Raghu Machiraju  
+Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics. 2021.  
 
-Chaitanya Kulkarni, Jany Chan, Eric Fosler-Lussier, Raghu Machiraju
-
-Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics. 2021.
 ```
 @inproceedings{kulkarni-etal-2021-learning,
     title = "Learning Latent Structures for Cross Action Phrase Relations in Wet Lab Protocols",
